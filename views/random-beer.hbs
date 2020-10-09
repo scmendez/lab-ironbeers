@@ -5,7 +5,11 @@
         {{> beerpartial this}}
     </div>
     <div class="random-beer-bonus-info">
-        Food pairing: {{this.food_pairing}}
+        Food pairing: {{#each this.food_pairing}}
+        <p> - {{ this }}</p>
+        {{/each}}
+        {{!-- this.food_pairing is an array that we want to loop over
+        since we're looping over this.food_pairing now, "this" is the information of each string within the array --}}
         <br>
         Brewers' Tips: {{this.brewers_tips}}
     </div>

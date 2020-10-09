@@ -1,3 +1,4 @@
+const { DH_UNABLE_TO_CHECK_GENERATOR } = require('constants');
 const express = require('express');
 
 const hbs = require('hbs');
@@ -15,6 +16,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Register the location for handlebars partials here:
 
 hbs.registerPartials(path.join(__dirname, 'views/partials'));
+// always register partials BEFORE the routes
+// all that path.join is doing is manually joining things together, same thing as:
+// hbs.registerPartials(__dirname + 'views/partials');
 
 // Add the route handlers here:
 
@@ -30,6 +34,7 @@ app.get('/beers', (req, res) => {
       res.render('beers.hbs', {
         beersFromApi
       }))
+      //always when sending info to hbs (or any template engine) files, MUST be an object
     .catch(error => console.log(error));
 
 })
@@ -49,6 +54,7 @@ app.get('/random-beer', (req, res) => {
 app.get('/beers/beer-:id', (req, res) => {
 
   let id = req.params.id
+  // req.params is an object express gives you
 
   punkAPI
     .getBeer(id)

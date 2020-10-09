@@ -104,6 +104,7 @@ footer {
 
 .random-beer-bonus-info {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     margin-left: 60px;
     padding: 0px 50px 50px 50px;

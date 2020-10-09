@@ -1,5 +1,6 @@
 <div>
     <img src="{{this.image_url}}" alt="image of{{this.name}}" class="beer-img">
+    {{!-- don't necessarily need quotes for the src, because the this.image_url we are calling has the value wrapped in quotes --}}
 </div>
 <div class="beer-text">
     <a href="/beers/beer-{{this.id}}" class="beer-name">{{this.name}}</a>
